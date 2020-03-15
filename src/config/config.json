@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
-    "database": "node",
+    "username": "user_blog",
+    "password": "test_blog",
+    "database": "postgres",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "port" : 5432,
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",

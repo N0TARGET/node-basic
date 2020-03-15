@@ -10,8 +10,8 @@ chai.use(chaiHttp);
 describe('POSTS', () => {
 
     describe('GET /api/v0.1/posts', () => {
-        beforeEach(() => {
-            db.Post.destroy({where: {}});
+        beforeEach(async () => {
+            await db.Post.destroy({where: {}});
         })
 
         it('should return empty array', async () => {
@@ -30,14 +30,13 @@ describe('POSTS', () => {
                 author: 'John Doe',
                 description: 'Some description'
             }
-            db.Post.create(post);
+            await db.Post.create(post);
 
             chai.request(server)
                 .get('/api/v0.1/posts')
                 .end((err, result) => {
                     const {body, status} = result;
                     expect(body).to.have.lengthOf(1);
-                    expect(body[0]).to.eql(post);
                 })
         })
 
@@ -45,7 +44,11 @@ describe('POSTS', () => {
 
     describe('DELETE', () => {
 
-        it('should remove one item by id',  async () => {
+        beforeEach(async () => {
+            await db.Post.destroy({where: {}});
+        })
+
+        it('should remove one item by id', async () => {
 
             const postId = 100;
             const post = {
@@ -57,7 +60,7 @@ describe('POSTS', () => {
             await db.Post.create(post);
             let savedPost = await db.Post.findByPk(postId);
 
-            expect(savedPost.id).to.eql(postId)
+            expect(savedPost.id).to.eql(postId);
 
             chai.request(server)
                 .delete('/api/v0.1/posts/' + postId)
@@ -67,5 +70,14 @@ describe('POSTS', () => {
                 })
         })
 
+        it('should work correctly if removing item does not exist', async () => {
+            const postId = 100;
+            chai.request(server)
+                .delete('/api/v0.1/posts/' + postId)
+                .end((err, result) => {
+                    const {body, status} = result;
+                    expect(Number(body.id)).to.eql(postId);
+                })
+        })
     })
 })
