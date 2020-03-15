@@ -45,7 +45,7 @@ router.put('/', (req, resp) => {
 router.delete('/:id', (req, resp) => {
         try {
             let data = postService.remove(req.params.id);
-            resp.send({id: data});
+            resp.send({id: req.params.id});
         } catch (err) {
             resp.status(500).send({message: err.message})
         }
