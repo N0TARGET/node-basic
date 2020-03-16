@@ -1,4 +1,5 @@
-const dao = require('../dao/PostDAO');
+// const dao = require('../postgres/dao/PostDAO');
+const dao = require('../mongo/dao/PostDAO');
 
 class PostService {
 

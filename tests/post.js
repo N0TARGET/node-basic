@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 const expect = chai.expect;
 
 const server = require('../src/index');
-const db = require('../src/models');
+const db = require('../src/postgres/models');
 
 chai.use(chaiHttp);
 
