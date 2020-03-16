@@ -1,0 +1,9 @@
+const { join } = require('path');
+const path = tail => join(__dirname, tail);
+
+module.exports = {
+	"config": path("src/postgres/config/config.json"),
+	"migrations-path": path("src/postgres/migrations"),
+	"seeders-path": path("src/postgres/seeds"),
+	"models-path": path("src/postgres/models")
+};

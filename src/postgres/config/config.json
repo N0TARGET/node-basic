@@ -1,5 +1,5 @@
 {
-  "development": {
+  "developmentodmodmodm": {
     "username": "user_blog",
     "password": "test_blog",
     "database": "postgres",
@@ -8,18 +8,11 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": "root",
-    "database": "node",
+    "username": "test_user",
+    "password": "pwd",
+    "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "operatorsAliases": false
+    "port" : 5433,
+    "dialect": "postgres"
   }
 }

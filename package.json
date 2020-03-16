@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node src/index.js",
     "start:dev": "nodemon src/index.js",
-    "test": "mocha tests/**.js --exit",
+    "test": "NODE_ENV=test mocha tests/**.js --exit",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "db:migrate:undo": "npx sequelize-cli db:migrate:undo:all"
+    "db:migrate-test": "npx sequelize-cli db:migrate --env test",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo:all",
+    "db:migrate-test:undo": "npx sequelize-cli db:migrate:undo:all --env test"
   },
   "keywords": [],
   "author": "",
